@@ -1,0 +1,13 @@
+Test flows:
+
+-	Create WebClient that is successfully logged into account cockpit (if this step is not successful terminate all subsequent tests that require the client)
+	-	What is needed to achive this behaviour:
+		-	Order of test execution
+		-	Creation of test suites (not only on maven module level, but also on more granular level e.g. creation of test suite inside maven module)
+-	Execute all test that require it
+-	Every test should do only few things, there shouldn't be any test that do more than few things (that way we could optimize tests)
+	-	Test example:
+		-	Create an platform access token with given set of scopes. The token should be created only once i.e. in @BeforeClass or as @ClassRule (@ClassRule is prefferable)
+		-	assertThat/testThat the token could be used for the given operations
+		-	assertThat/testThat the token couldn't be used for the non given operations
+		-	assertThat/testThat the token couldn't be used for other authorities
